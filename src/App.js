@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import "@mantine/core/styles.css";
+import { MantineProvider, Title, Stack } from "@mantine/core";
+import { theme } from "./theme";
+import { AddTodo } from "./components/add-todo";
+import { TodoList } from "./components/todo-list";
+import { CompletedTodos } from "./components/completed-todos";
 
 function App() {
+  console.log("Rendering <App />...");
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <MantineProvider theme={theme}>
+      <div className="main-container">
+        <Stack gap={30} align="center">
+          <Title order={1}>React Signals</Title>
+          <CompletedTodos />
+          <AddTodo />
+          <TodoList />
+        </Stack>
+      </div>
+    </MantineProvider>
   );
 }
 
